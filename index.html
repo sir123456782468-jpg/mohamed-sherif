@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Very Special Gift</title>
+    <!-- تحميل مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- لتحسين شكل الخط في الرسائل (Dancing Script هو الخط المميز) -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* الألوان: موف فاتح */
+        :root {
+            --bg-color: #e6e0f8; 
+            --primary-color: #8a2be2; /* البنفسجي الرئيسي */
+            --secondary-color: #fce4ec; 
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* تنسيق خط الرسائل بالإنجليزية */
+        .fancy-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem; /* حجم أكبر ليظهر الخط بشكل أجمل */
+            line-height: 1.8;
+            color: #6a5acd; 
+            text-align: center; /* المحاذاة في المنتصف */
+        }
+
+        /* تخصيص المشغل (بدون صور) */
+        .audio-player-container {
+            background-color: #f3e8ff; 
+            border: 1px solid #d8b4fe;
+        }
+
+        /* تنسيق زر القفل */
+        .lock-button {
+            box-shadow: 0 4px 6px -1px rgba(138, 43, 226, 0.4);
+        }
+
+        /* كود الاهتزاز */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+        .animate-shake {
+            animation: shake 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الحاوية الرئيسية للموقع -->
+    <div class="p-4 w-full max-w-md">
+
+        <!-- 1. شاشة القفل (الشاشة الوردية الأصلية) -->
+        <div id="lock-screen" class="bg-white p-8 rounded-3xl shadow-2xl transition-all duration-700">
+            
+            <div class="flex flex-col items-center space-y-6">
+                <!-- أيقونة القفل -->
+                <svg class="w-12 h-12 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+                
+                <h1 class="text-3xl font-extrabold text-pink-600 tracking-wider">Enter Password</h1>
+                
+                <p class="text-xl text-pink-400">
+                    <span class="text-3xl align-middle">❤️</span> Unlock
+                </p>
+
+                <!-- حقل إدخال كلمة المرور -->
+                <input type="password" id="password-input" placeholder="Enter the secret code"
+                       class="w-full text-center p-3 mt-4 border-2 border-pink-200 rounded-full focus:ring-pink-500 focus:border-pink-500 focus:outline-none placeholder-pink-300 text-gray-700 bg-pink-50">
+
+                <p id="error-message" class="text-sm text-red-500 h-5"></p>
+                
+                <!-- زر "دخول" -->
+                <button id="unlock-button"
+                        class="lock-button w-full py-3 text-lg font-bold text-white bg-pink-500 rounded-full hover:bg-pink-600 active:bg-pink-700 focus:outline-none focus:ring-4 focus:ring-pink-300">
+                    Access
+                </button>
+            </div>
+        </div>
+
+        <!-- 2. شاشة المحتوى الداخلية (تظهر بعد إدخال كلمة المرور الصحيحة) -->
+        <div id="content-screen" class="hidden transition-all duration-700">
+            
+            <div class="text-center mb-8">
+                <h2 class="text-5xl font-extrabold fancy-text text-purple-700">Our Story</h2>
+                <p class="text-xl text-purple-400">Pov: My Love Letter</p>
+            </div>
+
+
+            <!-- بطاقة الرسالة (My Love Letter) -->
+            <div class="bg-white p-8 rounded-3xl shadow-lg mb-6">
+                <div class="text-center">
+                    <h3 class="text-3xl fancy-text text-purple-700 mb-4">My Love Letter <span class="align-middle">💌</span></h3>
+                    
+                    <!-- الرسالة المخصصة الجديدة بالإنجليزية -->
+                    <div class="text-center fancy-text text-lg text-gray-700 space-y-4 pt-4 border-t border-purple-100">
+                        <p>
+                            I love you, the light of my eyes, you are the best thing 
+                            that has ever happened in my whole life.
+                        </p>
+                        <p>
+                            No matter how hard life gets, you are my support, 
+                            my safe haven, and the reason I smile every single day. 
+                        </p>
+                        <p>
+                            With you, every challenge becomes a small step on a beautiful journey.
+                            You are my forever home and my greatest blessing. Thank you for being you. 
+                            <span class="text-purple-500 align-middle">💍</span>
+                        </p>
+                    </div>
+                    
+                    <!-- زر الانتقال - سنقوم ببرمجته في الخطوة القادمة -->
+                    <button id="next-button"
+                            class="w-full mt-8 py-3 text-lg font-bold text-white bg-purple-500 rounded-full hover:bg-purple-600 active:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300">
+                        Next 💖
+                    </button>
+                </div>
+            </div>
+
+            <!-- بطاقة مشغل الأغاني (مش جديد عليك جمالك) -->
+            <div class="audio-player-container p-6 rounded-3xl shadow-lg text-center">
+                <p class="text-sm font-semibold text-purple-600 uppercase">Mesh Gedid 3aleek Gamalak</p>
+                <p class="text-lg text-purple-400 mb-4">Amr Diab</p>
+
+                <!-- مشغل الأغاني - تم وضع الرابط المباشر -->
+                <audio id="music-player" controls class="w-full mt-4">
+                    <!-- **** تم وضع الرابط المباشر هنا **** -->
+                    <source src="https://serv100.albumaty.com/dl/3en/amr-diab/albums/shoft-elayam/06._Mosh_Gedeed.mp3" type="audio/mpeg">
+                    <p class="text-red-500 mt-2">Could not play music. The file might have been moved.</p> 
+                </audio>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- كود الجافاسكريبت (للوظائف والتحقق) -->
+    <script>
+        // كلمة المرور السرية (يمكنك تغييرها هنا)
+        const CORRECT_PASSWORD = "1234"; 
+
+        const lockScreen = document.getElementById('lock-screen');
+        const contentScreen = document.getElementById('content-screen');
+        const passwordInput = document.getElementById('password-input');
+        const unlockButton = document.getElementById('unlock-button');
+        const errorMessage = document.getElementById('error-message');
+        const musicPlayer = document.getElementById('music-player');
+        // تعريف زر Next لبرمجته لاحقاً
+        const nextButton = document.getElementById('next-button'); 
+
+        function checkPassword() {
+            const enteredPassword = passwordInput.value.trim();
+
+            if (enteredPassword === CORRECT_PASSWORD) {
+                // كلمة المرور صحيحة
+                lockScreen.classList.add('opacity-0', 'scale-95'); 
+
+                setTimeout(() => {
+                    lockScreen.classList.add('hidden');
+                    contentScreen.classList.remove('hidden');
+                    // تأثير الظهور
+                    contentScreen.classList.add('opacity-100', 'scale-100', 'transition-all', 'duration-700'); 
+                    
+                    // محاولة تشغيل الأغنية تلقائياً
+                    musicPlayer.play().catch(error => {
+                        console.log("Auto-play was prevented. User needs to interact first.", error);
+                    });
+
+                }, 300);
+                
+            } else {
+                // كلمة المرور خاطئة
+                errorMessage.textContent = "Incorrect password. Try again.";
+                passwordInput.value = ""; 
+                
+                // إضافة تأثير اهتزاز
+                lockScreen.classList.add('animate-shake');
+                setTimeout(() => {
+                    lockScreen.classList.remove('animate-shake');
+                }, 500);
+            }
+        }
+        
+        // ربط وظيفة التحقق بالأزرار
+        unlockButton.addEventListener('click', checkPassword);
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // ===============================================
+        // وظيفة زر "Next 💖"
+        // في الخطوة القادمة سنقوم بتحديد ما سيحدث عند الضغط على هذا الزر
+        // ===============================================
+        nextButton.addEventListener('click', () => {
+            // مؤقتاً: يقوم بتحريك الشاشة للأعلى قليلاً
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            console.log("Next button clicked! Ready for the next content.");
+        });
+    </script>
